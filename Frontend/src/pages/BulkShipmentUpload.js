@@ -19,7 +19,7 @@ export default function BulkShipmentUpload({ visible, setVisible, onDone }) {
     formData.append("file", file);
 
     try {
-      await API.post("/shipments/bulk-upload", formData, {
+      await API.post("/shipment/bulk-upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setMsg("✅ Upload successful");

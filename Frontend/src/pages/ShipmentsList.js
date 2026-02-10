@@ -48,7 +48,7 @@ export default function ShipmentsList() {
 
     const query = `?page=${page}&pageSize=${pageSize}&search=${search}`;
 
-    API.get(`/v1/shipments${query}`)
+    API.get(`/shipment${query}`)
       .then((res) => {
         const data = Array.isArray(res.data) ? res.data : [];
         setRows(data);
@@ -75,7 +75,7 @@ export default function ShipmentsList() {
   // ---------- STATUS UPDATE ----------
   async function updateStatus(id, status) {
     try {
-      await API.patch(`/shipments/${id}/delivery-status`, {
+      await API.patch(`/shipment/delivery-status/${id}`, {
         delivery_status: status,
       });
       fetchAll();
@@ -258,7 +258,7 @@ export default function ShipmentsList() {
                     value={r.delivery_status || "IN_PROCESS"}
                     onChange={async (e) => {
                       try {
-                        await API.patch(`/shipments/${r._id}/delivery-status`, {
+                        await API.patch(`/shipment/delivery-status/${r._id}`, {
                           delivery_status: e.target.value,
                         });
                         fetchAll();
@@ -309,7 +309,7 @@ export default function ShipmentsList() {
                     onClick={async () => {
                       try {
                         setSavingId(r._id);
-                        await API.put(`/shipments/${r._id}/manual-desc`, {
+                        await API.patch(`/shipment/manual-desc/${r._id}`, {
                           manual_desc: descValues[r._id],
                         });
                         toast.success("Description saved ✅");

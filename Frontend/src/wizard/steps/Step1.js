@@ -48,7 +48,7 @@ export default function Step1({ initial = {}, onNext, onUpdate = () => {} }) {
   useEffect(() => {
     if (form.enquiry_no) return;
 
-    fetch("https://backend-project-2fav.onrender.com/api/v1/shipment/enquiry-number")
+    fetch(`${process.env.REACT_APP_API_URL}/shipment/enquiry-number`)
       .then((res) => res.json())
       .then((data) => {
         if (data?.enquiryNo) {

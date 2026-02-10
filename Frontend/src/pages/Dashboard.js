@@ -20,7 +20,7 @@ ChartJS.register(
   BarElement,
   ArcElement,
   Tooltip,
-  Legend
+  Legend,
 );
 
 export default function Dashboard() {
@@ -29,7 +29,7 @@ export default function Dashboard() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    API.get("/shipments/dashboard/summary")
+    API.get("/shipment/dashboard")
       .then((res) => {
         setSummary(res.data);
         setLoading(false);

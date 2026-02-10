@@ -24,7 +24,7 @@ export default function Wizard({ id }) {
   const [data, setData] = useState(editData);
 
   const update = useCallback((part) => {
-    setData(prev => ({ ...prev, ...part }));
+    setData((prev) => ({ ...prev, ...part }));
   }, []);
 
   /* ==========================
@@ -41,9 +41,9 @@ export default function Wizard({ id }) {
       // ✅ EDIT MODE
       if (id) {
         res = await axios.patch(
-          `https://working-code-am.onrender.com/api/shipment/${id}`,
+          `${process.env.REACT_APP_API_URL}/shipment/${id}`,
           data,
-          { headers: { "Content-Type": "application/json" } }
+          { headers: { "Content-Type": "application/json" } },
         );
         alert("Shipment updated successfully ✔️");
         navigate("/shipments");
@@ -52,9 +52,9 @@ export default function Wizard({ id }) {
       // ✅ CREATE MODE
       else {
         res = await axios.post(
-          "https://working-code-am.onrender.com/api/shipment/",
+          `${process.env.REACT_APP_API_URL}/shipment/`,
           data,
-          { headers: { "Content-Type": "application/json" } }
+          { headers: { "Content-Type": "application/json" } },
         );
         alert("Shipment created successfully ✔️");
       }
@@ -67,7 +67,7 @@ export default function Wizard({ id }) {
         alert(
           `Save failed: HTTP ${err.response.status} - ${
             err.response.data?.message || "Unknown error"
-          }`
+          }`,
         );
       } else if (err.request) {
         alert("Save failed: Backend not responding");
@@ -81,7 +81,7 @@ export default function Wizard({ id }) {
     <div className="wizard">
       {/* Stepper */}
       <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
-        {STEPS.map(s => (
+        {STEPS.map((s) => (
           <div
             key={s.id}
             className={s.id === step ? "active" : ""}
@@ -95,11 +95,7 @@ export default function Wizard({ id }) {
       {/* Steps */}
       <div className="card">
         {step === 1 && (
-          <Step1
-            initial={data}
-            onNext={() => setStep(2)}
-            onUpdate={update}
-          />
+          <Step1 initial={data} onNext={() => setStep(2)} onUpdate={update} />
         )}
 
         {step === 2 && (
@@ -112,11 +108,7 @@ export default function Wizard({ id }) {
         )}
 
         {step === 3 && (
-          <Step4
-            data={data}
-            onPrev={() => setStep(2)}
-            onSave={saveFinal}
-          />
+          <Step4 data={data} onPrev={() => setStep(2)} onSave={saveFinal} />
         )}
       </div>
     </div>

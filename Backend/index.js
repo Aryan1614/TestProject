@@ -6,7 +6,7 @@ const shipmentRoutes = require("./routes/shipment.route");
 const notificationRoutes = require("./routes/notification.route");
 
 // const cookieParser = require("cookie-parser");
-// const fileUpload = require("express-fileupload");
+const fileUpload = require("express-fileupload");
 const cors = require("cors");
 
 const database = require("./config/database");
@@ -25,12 +25,12 @@ app.use(
         credentials: true,
     })
 );
-// app.use(
-//     fileUpload({
-// 		useTempFiles: true,
-// 		tempFileDir: "/tmp",
-// 	})
-// );
+app.use(
+    fileUpload({
+		useTempFiles: true,
+		tempFileDir: "/tmp",
+	})
+);
 
 app.use("/api/v1/shipment", shipmentRoutes);
 app.use("/api/v1/notification", notificationRoutes);

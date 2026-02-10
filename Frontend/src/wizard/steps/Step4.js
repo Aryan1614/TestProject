@@ -9,11 +9,11 @@ export default function Step3({ data = {}, onPrev, onSave }) {
 
   async function exportExcel() {
     // placeholder: call backend to return excel binary or implement client-side
-    window.open(`https://backend-project-2fav.onrender.com/api/shipments/${data.id}/export/excel`);
+    window.open(`${process.env.REACT_APP_API_URL}/shipments/${data.id}/export/excel`);
   }
 
   async function exportPDF() {
-    window.open(`https://backend-project-2fav.onrender.com/api/shipments/${data.id}/export/pdf`);
+    window.open(`${process.env.REACT_APP_API_URL}/shipments/${data.id}/export/pdf`);
   }
 
   return (
