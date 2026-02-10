@@ -35,7 +35,7 @@ export default function ShipmentsList() {
 
   // ---------- INITIAL LOAD ----------
   useEffect(() => {
-    fetch("https://working-code-am.onrender.com/api/health")
+    API.get("/health")
       .then(() => setBackendStatus("connected"))
       .catch(() => setBackendStatus("disconnected"))
       .finally(fetchAll);

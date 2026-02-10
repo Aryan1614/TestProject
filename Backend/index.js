@@ -35,6 +35,7 @@ app.use(
 app.use("/api/v1/shipment", shipmentRoutes);
 app.use("/api/v1/notification", notificationRoutes);
 
+
 // Testing the server
 app.get("/", (req, res) => {
 	return res.json({
@@ -43,6 +44,7 @@ app.get("/", (req, res) => {
 	});
 });
 
+// mongoDB Health
 app.get("/api/v1/health", (req, res) => {
   res.json({
     status: "ONLINE",
