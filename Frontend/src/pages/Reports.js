@@ -1,11 +1,9 @@
-import React from "react";
-import API from "../services/api";
 import "./Reports.css";
 
 export default function Reports() {
-  const currentDate = new Date();
-  const month = currentDate.getMonth() + 1;
-  const year = currentDate.getFullYear();
+  // const currentDate = new Date();
+  // const month = currentDate.getMonth() + 1;
+  // const year = currentDate.getFullYear();
 
   const downloadMonthlyCSV = () => {
     // call api which will download the file

@@ -1,11 +1,11 @@
 // frontend/src/wizard/steps/Step3.js
-import React from "react";
-import API from "../../services/api";
+// import React from "react";
+// import API from "../../services/api";
 
 export default function Step3({ data = {}, onPrev, onSave }) {
-  async function handleSave() {
-    if (onSave) await onSave();
-  }
+  // async function handleSave() {
+  //   if (onSave) await onSave();
+  // }
 
   async function exportExcel() {
     // placeholder: call backend to return excel binary or implement client-side
